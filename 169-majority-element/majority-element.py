@@ -15,20 +15,20 @@ class Solution(object):
         #         if count > valu:
         #             return nums[i]     
 
-        #2 Batter
+        # #2 Batter
 
-        n = len(nums)
-        mpp = {}
+        # n = len(nums)
+        # mpp = {}
 
-        for num in nums:
-            if num in mpp: 
-                mpp[num] += 1
-            else:
-                mpp[num] = 1
+        # for num in nums:
+        #     if num in mpp: 
+        #         mpp[num] += 1
+        #     else:
+        #         mpp[num] = 1
 
-            for key in mpp:
-                if mpp[key] > n//2:
-                    return key             
+        #     for key in mpp:
+        #         if mpp[key] > n//2:
+        #             return key             
 
 
 
@@ -37,6 +37,25 @@ class Solution(object):
         # return nums[len(nums) // 2]
         
         
+        #morce voiting algo
 
+        ele = 0
+        count = 0
+        n = len(nums)
 
+        for i in range(n):
+            if count == 0:
+                count = 1
+                ele = nums[i]
+            elif nums[i] == ele:
+                count += 1
+            else:
+                count -= 1        
+        count1 = 0
+
+        for k in range(n):
+            if nums[k] == ele:
+                count1 += 1
+            if count1 > n//2:
+                return ele    
         
