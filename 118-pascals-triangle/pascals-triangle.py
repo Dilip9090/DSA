@@ -1,18 +1,18 @@
 class Solution(object):
-    def generate(self, numRows):
+    def generate(self, n):
         """
         :type numRows: int
         :rtype: List[List[int]]
         """
-        final = []
+        ans = []
 
-        for i in range(numRows):
-            row = [1] * (i + 1)
-
+        for i in range(1, n + 1):
+            temp = []
+            total = 1
+            temp.append(total)
             for j in range(1, i):
-                row[j] = final[i - 1][j - 1] + final[i - 1][j]
-
-            final.append(row)
-
-        return final
-        
+                total = total * (i - j)
+                total = total // j
+                temp.append(total)
+            ans.append(temp)
+        return ans         
