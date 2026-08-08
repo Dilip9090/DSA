@@ -4,36 +4,64 @@ class Solution(object):
         :type nums: List[int]
         :rtype: List[int]
         """
-        count1 = count2 = 0
-        candidate1 = candidate2 = None
+        mpp = {}
+        n = len(nums)
+        arr = []
 
         for num in nums:
-
-            if num == candidate1:
-                count1 += 1
-
-            elif num == candidate2:
-                count2 += 1
-
-            elif count1 == 0:
-                candidate1 = num
-                count1 = 1
-
-            elif count2 == 0:
-                candidate2 = num
-                count2 = 1
-
+            if num in mpp:
+                mpp[num] += 1
             else:
-                count1 -= 1
-                count2 -= 1
+                mpp[num] = 1
 
-        result = []
+        for key in mpp:
+            if mpp[key] > n // 3:
+                arr.append(key)
+        return arr                    
 
-        if nums.count(candidate1) > len(nums) // 3:
-            result.append(candidate1)
 
-        if candidate2 != candidate1 and nums.count(candidate2) > len(nums) // 3:
-            result.append(candidate2)
+        # arr = []
+        # n = len(nums)
 
-        return result
+        # for i in range(n):
+        #     count = 0
+        #     for j in range(n):
+        #         if nums[i] == nums[j]:
+        #             count += 1
+        #             if count > n/3 and nums[i] not in arr:
+        #                 arr.append(nums[i])
+        # return arr                
+        
+        # count1 = count2 = 0
+        # candidate1 = candidate2 = None
+
+        # for num in nums:
+
+        #     if num == candidate1:
+        #         count1 += 1
+
+        #     elif num == candidate2:
+        #         count2 += 1
+
+        #     elif count1 == 0:
+        #         candidate1 = num
+        #         count1 = 1
+
+        #     elif count2 == 0:
+        #         candidate2 = num
+        #         count2 = 1
+
+        #     else:
+        #         count1 -= 1
+        #         count2 -= 1
+
+        # result = []
+
+        # if nums.count(candidate1) > len(nums) // 3:
+        #     result.append(candidate1)
+
+        # if candidate2 != candidate1 and nums.count(candidate2) > len(nums) // 3:
+        #     result.append(candidate2)
+
+        # return result
         
