@@ -4,18 +4,51 @@ class Solution(object):
         :type nums: List[int]
         :rtype: List[int]
         """
-        mpp = {}
+        ele1, count1 = 0, 0
+        ele2, count2 = 0, 0
         n = len(nums)
-        arr = []
 
-        for num in nums:
-            if num in mpp:
-                mpp[num] += 1
+        for i in range(n):
+            if count1 == 0 and nums[i] != ele2:
+                ele1 = nums[i]
+                count1 = 1
+            elif count2 == 0 and nums[i] != ele1:
+                ele2 = nums[i]
+                count2 = 1
+            elif ele1 == nums[i]:
+                count1 += 1
+            elif ele2 == nums[i]:
+                count2 += 1        
             else:
-                mpp[num] = 1
-            if mpp[num] > n // 3 and num not in arr:    
-                arr.append(num)
+                count1 -= 1
+                count2 -= 1 
+        count1 = 0
+        count2 = 0
+        arr = []             
+        for i in range(n):          
+            if nums[i] == ele1:
+                count1 += 1
+            elif nums[i] == ele2:
+                count2 += 1    
+
+        if count1 > n // 3:
+            arr.append(ele1)
+        if count2 > n // 3:
+            arr.append(ele2)
         return arr   
+
+        # mpp = {}
+        # n = len(nums)
+        # arr = []
+
+        # for num in nums:
+        #     if num in mpp:
+        #         mpp[num] += 1
+        #     else:
+        #         mpp[num] = 1
+        #     if mpp[num] > n // 3 and num not in arr:    
+        #         arr.append(num)
+        # return arr   
 
 
         # mpp = {}
