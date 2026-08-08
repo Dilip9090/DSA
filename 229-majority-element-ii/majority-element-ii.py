@@ -13,11 +13,25 @@ class Solution(object):
                 mpp[num] += 1
             else:
                 mpp[num] = 1
+            if mpp[num] > n // 3 and num not in arr:    
+                arr.append(num)
+        return arr   
 
-        for key in mpp:
-            if mpp[key] > n // 3:
-                arr.append(key)
-        return arr                    
+
+        # mpp = {}
+        # n = len(nums)
+        # arr = []
+
+        # for num in nums:
+        #     if num in mpp:
+        #         mpp[num] += 1
+        #     else:
+        #         mpp[num] = 1
+
+        # for key in mpp:
+        #     if mpp[key] > n // 3:
+        #         arr.append(key)
+        # return arr                    
 
 
         # arr = []
